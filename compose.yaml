@@ -1,0 +1,79 @@
+name: folio
+services:
+  postgres:
+    image: postgres:16-alpine
+    env_file: .env.local
+    environment:
+      POSTGRES_DB: folio
+      POSTGRES_USER: folio
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U folio -d folio"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports:
+      - "127.0.0.1:1025:1025"
+      - "127.0.0.1:8025:8025"
+    restart: unless-stopped
+  compiler-image:
+    image: folio-tex:local
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.compiler
+    entrypoint: ["/bin/true"]
+    restart: "no"
+  compiler:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.compiler-service
+    env_file: .env.local
+    environment:
+      COMPILER_HOST: 0.0.0.0
+      COMPILER_BUILD_ROOT: /builds
+      COMPILER_BUILD_VOLUME: folio-builds
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - builds:/builds
+    depends_on:
+      compiler-image:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4100/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    restart: unless-stopped
+  web:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.web
+    env_file: .env.local
+    environment:
+      APP_URL: ${FOLIO_APP_URL:-http://localhost:3030}
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      SMTP_SERVICE_HOST: mailpit
+      COMPILER_URL: http://compiler:4100
+      ALLOW_INSECURE_LOCAL_DEV: "true"
+    ports:
+      - "127.0.0.1:${FOLIO_PORT:-3030}:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      compiler:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    command: ["sh", "-c", "npm run db:migrate:container && node node_modules/next/dist/bin/next start --hostname 0.0.0.0 --port 3000"]
+    restart: unless-stopped
+volumes:
+  postgres-data:
+  builds:
+    name: folio-builds

@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+test-results/
+playwright-report/
+public/pdf.worker.min.mjs
+
+.impeccable/live/*
+!.impeccable/live/config.json
+.impeccable/review/**/*.png

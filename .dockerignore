@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.env*
+public
+test-results
+playwright-report
+*.tsbuildinfo
+.impeccable/live
+.impeccable/review

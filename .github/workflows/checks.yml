@@ -1,0 +1,49 @@
+name: Check application
+on:
+  push:
+  pull_request:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+  billing:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: folio
+          POSTGRES_USER: folio
+          POSTGRES_PASSWORD: ci-folio-test-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U folio -d folio"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      APP_URL: http://127.0.0.1:3001
+      DATABASE_URL: postgresql://folio:ci-folio-test-password@127.0.0.1:5432/folio
+      BETTER_AUTH_SECRET: ci-auth-secret-for-isolated-tests-only-2026
+      COMPILER_TOKEN: ci-compiler-token-for-isolated-tests-only-2026
+      SMTP_HOST: 127.0.0.1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: touch .env.local
+      - run: npm run db:migrate
+      - run: npm run test:billing
