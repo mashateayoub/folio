@@ -2,6 +2,8 @@
 
 Next.js application with verified accounts, multi-tenant workspaces, cloud autosave, project sharing, and an actual Docker-backed LaTeX-to-PDF preview.
 
+Read the [complete documentation](docs/README.md) for architecture, every API route, data models, security, billing, compiler internals, development, and operations.
+
 ## Run the complete app
 
 Requirements: Docker Engine 26+ with Compose v2, and Node.js 22+ / npm for setup. The compiler uses Docker's volume subpath feature.
