@@ -1,5 +1,13 @@
 name: folio
 services:
+  docs:
+    profiles: [docs]
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.docs
+    ports:
+      - "127.0.0.1:${FOLIO_DOCS_PORT:-4173}:80"
+    restart: unless-stopped
   postgres:
     image: postgres:16-alpine
     env_file: .env.local

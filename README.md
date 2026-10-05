@@ -4,6 +4,14 @@ Next.js application with verified accounts, multi-tenant workspaces, cloud autos
 
 Read the [complete documentation](docs/README.md) for architecture, every API route, data models, security, billing, compiler internals, development, and operations.
 
+## Browse the documentation website
+
+```sh
+docker compose --profile docs up --build -d docs
+```
+
+Open http://localhost:4173. See the [docs site guide](docs/getting-started/documentation-site.md) for local development and configuration.
+
 ## Run the complete app
 
 Requirements: Docker Engine 26+ with Compose v2, and Node.js 22+ / npm for setup. The compiler uses Docker's volume subpath feature.
@@ -60,14 +68,14 @@ Impeccable live mode uses a development-only injection slot in the root layout. 
 
 The reusable policy is in `src/lib/policy.ts`; server resource resolution and enforcement are in `src/lib/server/saas.ts`. Identity is obtained from the database session, never from a user ID in request JSON. The project determines its workspace, and the server checks current membership and grants.
 
-| Role / grant | Read | Edit / compile | Manage / delete |
-| --- | --- | --- | --- |
-| Workspace owner/admin | All workspace projects | Active projects | All workspace projects |
-| Member who owns project | Own project | Active own project | Own project |
-| Member with editor grant | Granted project | Active granted project | No |
-| Member with viewer grant | Granted project | No | No |
-| Member without grant | Workspace-visible projects | No | No |
-| Viewer workspace seat | Visible/granted/owned projects | No, even with editor grant | No |
+| Role / grant             | Read                           | Edit / compile             | Manage / delete        |
+| ------------------------ | ------------------------------ | -------------------------- | ---------------------- |
+| Workspace owner/admin    | All workspace projects         | Active projects            | All workspace projects |
+| Member who owns project  | Own project                    | Active own project         | Own project            |
+| Member with editor grant | Granted project                | Active granted project     | No                     |
+| Member with viewer grant | Granted project                | No                         | No                     |
+| Member without grant     | Workspace-visible projects     | No                         | No                     |
+| Viewer workspace seat    | Visible/granted/owned projects | No, even with editor grant | No                     |
 
 Attribute checks also require a verified enabled account, matching tenant, active organization, and active unexpired membership. Archived projects are readable but cannot be saved or compiled. Only owners can appoint or remove administrators; owners cannot demote/revoke themselves. Revocation removes project grants and pending invitations created by that member. Only administrators can view the roster and audit feed.
 

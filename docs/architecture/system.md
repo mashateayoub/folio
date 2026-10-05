@@ -23,6 +23,8 @@ The web runtime is Node.js because PostgreSQL, Stripe, mail, and server librarie
 
 Compose connects services using container DNS. Host development uses loopback addresses instead. Only the web, mailbox, SMTP, and host database ports are published locally. The compiler supervisor's Docker socket is a privileged host boundary even though the child job is constrained.
 
+An optional `docs` Compose profile serves the Markdown documentation as a static VitePress build through Nginx on loopback port 4173. It has no application/database/compiler dependencies. See [documentation site](../getting-started/documentation-site.md).
+
 There is no distributed queue or event bus. Webhooks and application operations use the same PostgreSQL tenant locking discipline. See [request flows](request-flows.md), [concurrency](concurrency.md), [database](../data/schema.md), and [compiler](../compiler/pipeline.md).
 
 ## Implementation references

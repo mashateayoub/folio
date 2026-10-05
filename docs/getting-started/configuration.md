@@ -46,3 +46,7 @@ Changing PostgreSQL's initialization password variable does not alter the passwo
 - [src/lib/server/config.ts](../../src/lib/server/config.ts)
 - [src/lib/server/mail.ts](../../src/lib/server/mail.ts)
 - [compose.yaml](../../compose.yaml)
+
+## Documentation site
+
+`FOLIO_DOCS_PORT` selects the loopback Docker docs port (default `4173`). The docs service is static and needs no app or billing secrets. See [docs website](documentation-site.md).

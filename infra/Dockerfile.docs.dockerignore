@@ -1,0 +1,16 @@
+**/node_modules
+.next
+.git
+.env*
+!.env.example
+public/pdf.worker.min.mjs
+test-results
+playwright-report
+*.tsbuildinfo
+docs-site/content
+docs-site/.vitepress/dist
+docs-site/.vitepress/cache
+docs-site/.vitepress/navigation.json
+.impeccable/live/*
+!.impeccable/live/config.json
+.impeccable/review/**/*.png

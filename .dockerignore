@@ -8,3 +8,8 @@ playwright-report
 *.tsbuildinfo
 .impeccable/live
 .impeccable/review
+docs-site/node_modules
+docs-site/content
+docs-site/.vitepress/dist
+docs-site/.vitepress/cache
+docs-site/.vitepress/navigation.json

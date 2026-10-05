@@ -6,9 +6,9 @@ The billing job starts PostgreSQL 16-alpine with isolated CI credentials, config
 
 Real browser, SaaS, TeX, and hosted Stripe acceptance are separate local/operator tiers. They are not automatically part of the current GitHub workflow. Public launch therefore needs explicit reporting of those checks and its infrastructure acceptance rather than assuming green CI implies full hosted correctness.
 
-The test/billing jobs are independent. The workflow does not deploy, publish images, merge a PR, provision cloud resources, or rotate keys. No required-check branch rule is configured by this YAML alone. Review repository hosting settings separately when making branch protection decisions.
+The application, billing, and documentation jobs are independent. The workflow does not deploy, publish images, merge a PR, provision cloud resources, or rotate keys. No required-check branch rule is configured by this YAML alone. Review repository hosting settings separately when making branch protection decisions.
 
-Formatting checks cover the script's owned TS/TSX/MJS scope; documentation links and source-reference inventory were checked during docs authoring, but there is no installed Markdown/link CI job yet. If adding one, keep it deterministic and distinguish local links from external network availability.
+The documentation job installs the separate locked docs package, tests link rewriting and source-path boundaries, and builds the static site. VitePress checks local page links during the build. It does not check external website availability or deploy the docs container. Root lint includes owned docs scripts/configuration and excludes generated content and dependency trees.
 
 ## Implementation references
 

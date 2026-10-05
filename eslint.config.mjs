@@ -10,5 +10,9 @@ export default defineConfig([
     ".next/**",
     "next-env.d.ts",
     "tools/oxlint/anti-slop/**",
+    "docs-site/node_modules/**",
+    "docs-site/content/**",
+    "docs-site/.vitepress/dist/**",
+    "docs-site/.vitepress/cache/**",
   ]),
 ]);

@@ -4,6 +4,8 @@ This reference explains the implemented application from user workflow through c
 
 ## Start here
 
+- To browse these docs as a website: [documentation site](getting-started/documentation-site.md).
+
 - To run the app: [quick start](getting-started/quick-start.md).
 - To understand what it does: [product overview](product/overview.md) and [user guide](product/user-guide.md).
 - To understand the code: [system architecture](architecture/system.md), [request flows](architecture/request-flows.md), and [every source file](reference/repository.md).
@@ -82,6 +84,7 @@ Install, configure, and run the project locally. [Section index](getting-started
 
 - [Configuration and secrets](getting-started/configuration.md)
 - [Develop with hot reload](getting-started/development.md)
+- [Run the documentation website](getting-started/documentation-site.md)
 - [Run the complete application](getting-started/quick-start.md)
 
 ### Operations

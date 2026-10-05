@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "docs:dev": "npm --prefix docs-site run dev",
+    "docs:build": "npm --prefix docs-site run build",
+    "docs:preview": "npm --prefix docs-site run preview",
+    "docs:test": "npm --prefix docs-site test",
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",

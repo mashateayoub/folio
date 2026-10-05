@@ -6,6 +6,10 @@ node_modules/
 test-results/
 playwright-report/
 public/pdf.worker.min.mjs
+docs-site/content/
+docs-site/.vitepress/dist/
+docs-site/.vitepress/cache/
+docs-site/.vitepress/navigation.json
 
 .impeccable/live/*
 !.impeccable/live/config.json

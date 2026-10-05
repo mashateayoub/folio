@@ -5,7 +5,8 @@
     "test-results/**", "playwright-report/**", ".impeccable/**",
     ".agent/**", ".agents/**", ".claude/**", ".codex/**", ".continue/**",
     ".cursor/**", ".gemini/**", ".opencode/**", ".pi/**", ".roo/**", ".windsurf/**",
-    "tools/oxlint/anti-slop/**"
+    "tools/oxlint/anti-slop/**", "docs-site/node_modules/**",
+    "docs-site/content/**", "docs-site/.vitepress/dist/**", "docs-site/.vitepress/cache/**"
   ],
   "jsPlugins": [
     { "name": "anti-slop", "specifier": "./tools/oxlint/anti-slop/index.ts" }

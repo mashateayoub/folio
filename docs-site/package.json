@@ -1,0 +1,17 @@
+{
+  "name": "folio-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare:content": "node scripts/prepare.mjs",
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run prepare:content && vitepress build",
+    "preview": "vitepress preview --host 0.0.0.0 --port 4173",
+    "test": "node --test scripts/prepare.test.mjs"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4",
+    "vitepress-plugin-mermaid": "2.0.17",
+    "mermaid": "11.12.0"
+  }
+}
