@@ -4,6 +4,8 @@ The private supervisor authenticates `Authorization: Bearer <COMPILER_TOKEN>` wi
 
 The TeX image uses Debian Bookworm, installed latexmk and TeX Live packages, non-root UID/GID 65534, `openin_any=p`, and `openout_any=p`. Its entrypoint supplies `-norc`, PDF output, nonstop mode, halt-on-error, file-line errors, no shell escape, and an output directory under `/work/output`.
 
+French Babel support is installed through `texlive-lang-french`, including `french.ldf`. Documents can use `\usepackage[french]{babel}`. After changing installed packages, rebuild with `docker compose build compiler-image`; subsequent jobs use the updated `folio-tex:local` image. Existing build records keep their previous logs until the document is compiled again.
+
 | Docker/job restriction | Actual value                                          |
 | ---------------------- | ----------------------------------------------------- |
 | Network                | `none`                                                |
