@@ -6,6 +6,8 @@ The TeX image uses Debian Bookworm, installed latexmk and TeX Live packages, non
 
 French Babel support is installed through `texlive-lang-french`, including `french.ldf`. Documents can use `\usepackage[french]{babel}`. After changing installed packages, rebuild with `docker compose build compiler-image`; subsequent jobs use the updated `folio-tex:local` image. Existing build records keep their previous logs until the document is compiled again.
 
+`cm-super` supplies T1/TS1 vector fonts so accented documents do not regenerate bitmap fonts in each disposable job. Job-local TeX auxiliary files remain isolated and are removed after each build.
+
 | Docker/job restriction | Actual value                                          |
 | ---------------------- | ----------------------------------------------------- |
 | Network                | `none`                                                |

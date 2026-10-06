@@ -40,6 +40,7 @@ db.commandes.aggregate([{ $match: { statut: "LIVREE" } }]);
   assert.equal(result.pdf.subarray(0, 5).toString(), "%PDF-");
   assert.ok(result.pdf.length > 5_000);
   assert.match(result.log, /french\.ldf/);
+  assert.doesNotMatch(result.log, /Running mktexpk/);
 });
 
 test("compiles a multi-file document to a real PDF", async () => {
