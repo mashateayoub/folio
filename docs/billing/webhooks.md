@@ -23,6 +23,6 @@ Real Sandbox tests cover delivered signed events, duplicate replay, tampered/mis
 ## Implementation references
 
 - [src/app/api/billing/webhook/route.ts](../../src/app/api/billing/webhook/route.ts)
-- [src/lib/server/http.ts](../../src/lib/server/http.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/server/http.ts](../../src/server/http.ts)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)
 - [tests/billing.stripe.ts](../../tests/billing.stripe.ts)

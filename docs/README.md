@@ -131,8 +131,11 @@ Follow current identity, authorization, validation, and execution boundaries. [S
 
 ## Scope, maintenance, and sources
 
-Implementation references at the end of chapters link to local source. The repository inventory covers every tracked non-doc file; the route inventory covers every application route handler; command/dependency tables come from the committed manifests; application DDL is reproduced exactly; auth schema is a read-only metadata snapshot of the migrated local database. No records or credentials are included.
+Implementation references at the end of chapters link to local source. The ORM/source-structure migration is documented as of 2026-10-06. The repository inventory covers every tracked non-doc file; the route inventory covers every application route handler; command/dependency tables come from the committed manifests; application DDL is reproduced exactly; auth schema is a read-only metadata snapshot of the migrated local database. No records or credentials are included.
 
 Implemented behavior, proposed roadmap, operator setup, and previously observed test results are distinguished. There is no assertion of complete Overleaf parity, simultaneous collaboration, durable offline recovery, public production acceptance, or every theoretical exploit/third-party internals being documented. [Limitations](product/limitations.md) states those boundaries concretely.
 
 Update the matching chapters when source changes. New routes/files/scripts/settings need matching reference entries. Generated reference snapshots are documentation, not migration code or a new build dependency. Root [README](../README.md), [DESIGN](../DESIGN.md), [PRODUCT](../PRODUCT.md), [implementation plan](../IMPLEMENTATION_PLAN.md), and [tasks](../TASKS.md) remain useful historical/top-level records; current implementation decides behavior if older plans differ.
+
+- [Source structure](architecture/source-structure.md)
+- [Drizzle ORM](data/orm.md)

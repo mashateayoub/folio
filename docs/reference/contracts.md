@@ -30,10 +30,10 @@ BillingProvider describes only consumed operations/fields. Stripe's actual SDK s
 
 ## Implementation references
 
-- [src/lib/server/schemas.ts](../../src/lib/server/schemas.ts)
-- [src/lib/api-responses.ts](../../src/lib/api-responses.ts)
-- [src/lib/cloud-client.ts](../../src/lib/cloud-client.ts)
-- [src/lib/server/billing-provider.ts](../../src/lib/server/billing-provider.ts)
+- [src/server/validation.ts](../../src/server/validation.ts)
+- [src/shared/contracts/api-responses.ts](../../src/shared/contracts/api-responses.ts)
+- [src/shared/http/cloud-client.ts](../../src/shared/http/cloud-client.ts)
+- [src/server/billing/provider.ts](../../src/server/billing/provider.ts)
 
 ## Example request bodies
 

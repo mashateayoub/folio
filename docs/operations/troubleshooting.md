@@ -30,7 +30,7 @@ Collect redacted service/version/route/status/tenant-state information. Exclude 
 
 ## Implementation references
 
-- [src/lib/server/http.ts](../../src/lib/server/http.ts)
-- [src/lib/server/config.ts](../../src/lib/server/config.ts)
+- [src/server/http.ts](../../src/server/http.ts)
+- [src/server/config.ts](../../src/server/config.ts)
 - [services/compiler/compile.ts](../../services/compiler/compile.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)

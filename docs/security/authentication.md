@@ -18,7 +18,7 @@ Email transport, generated tables, and permission checks are explained in [email
 
 ## Implementation references
 
-- [src/lib/server/auth.ts](../../src/lib/server/auth.ts)
-- [src/lib/auth-client.ts](../../src/lib/auth-client.ts)
-- [src/components/auth-screen.tsx](../../src/components/auth-screen.tsx)
-- [src/components/account-settings.tsx](../../src/components/account-settings.tsx)
+- [src/server/auth/service.ts](../../src/server/auth/service.ts)
+- [src/features/auth/client.ts](../../src/features/auth/client.ts)
+- [src/features/auth/components/auth-screen.tsx](../../src/features/auth/components/auth-screen.tsx)
+- [src/features/account/components/account-settings.tsx](../../src/features/account/components/account-settings.tsx)

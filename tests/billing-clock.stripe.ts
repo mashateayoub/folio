@@ -1,10 +1,11 @@
+import { sql } from "drizzle-orm";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import Stripe from "stripe";
-import { db } from "../src/lib/server/db";
-import { createOrganization } from "../src/lib/server/saas";
-import type { Actor } from "../src/lib/server/auth";
+import { db, closeDatabase } from "@/server/database/client";
+import { createOrganization } from "@/server/workspaces/service";
+import { type Actor } from "@/server/auth/service";
 
 async function waitFor(
   check: () => Promise<boolean>,
@@ -49,9 +50,8 @@ test(
     let clockId: string | undefined;
 
     try {
-      await db().query(
-        'INSERT INTO "user"(id,name,email,"emailVerified",disabled,"createdAt","updatedAt") VALUES ($1,$2,$3,true,false,now(),now())',
-        [actor.id, actor.name, actor.email],
+      await db().execute(
+        sql`INSERT INTO "user"(id,name,email,"emailVerified",disabled,"createdAt","updatedAt") VALUES (${actor.id},${actor.name},${actor.email},true,false,now(),now())`,
       );
       const org = await createOrganization(actor, actor.name);
       orgId = org.id;
@@ -77,9 +77,8 @@ test(
       await stripe.customers.update(customer.id, {
         invoice_settings: { default_payment_method: visa.id },
       });
-      await db().query(
-        "INSERT INTO workspace_billing(organization_id,customer_id,checkout_request) VALUES ($1,$2,$3)",
-        [org.id, customer.id, randomUUID()],
+      await db().execute(
+        sql`INSERT INTO workspace_billing(organization_id,customer_id,checkout_request) VALUES (${org.id},${customer.id},${randomUUID()})`,
       );
 
       const sub = await stripe.subscriptions.create({
@@ -91,9 +90,8 @@ test(
 
       const plan = async () =>
         (
-          await db().query(
-            "SELECT plan,plan_valid_until FROM organizations WHERE id=$1",
-            [org.id],
+          await db().execute<{ plan: string; plan_valid_until: Date }>(
+            sql`SELECT plan,plan_valid_until FROM organizations WHERE id=${org.id}`,
           )
         ).rows[0];
 
@@ -172,9 +170,8 @@ test(
         "signed successful recovery payment",
       );
 
-      const events = await db().query(
-        "SELECT event_type FROM billing_events WHERE organization_id=$1",
-        [org.id],
+      const events = await db().execute(
+        sql`SELECT event_type FROM billing_events WHERE organization_id=${org.id}`,
       );
 
       assert.ok(
@@ -197,9 +194,9 @@ test(
       }
 
       if (orgId)
-        await db().query("DELETE FROM organizations WHERE id=$1", [orgId]);
-      await db().query('DELETE FROM "user" WHERE id=$1', [actor.id]);
-      await db().end();
+        await db().execute(sql`DELETE FROM organizations WHERE id=${orgId}`);
+      await db().execute(sql`DELETE FROM "user" WHERE id=${actor.id}`);
+      await closeDatabase();
     }
   },
 );

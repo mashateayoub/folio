@@ -1,8 +1,9 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getActor } from "@/lib/server/auth";
-import { organizations, listProjects } from "@/lib/server/saas";
-import Workspace from "@/components/workspace";
+import { getActor } from "@/server/auth/service";
+import { organizations } from "@/server/workspaces/service";
+import { listProjects } from "@/server/projects/service";
+import Workspace from "@/features/editor/components/workspace";
 
 export const dynamic = "force-dynamic";
 

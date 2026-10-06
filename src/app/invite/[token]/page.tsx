@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getActor } from "@/lib/server/auth";
-import InvitationScreen from "@/components/invitation-screen";
+import { getActor } from "@/server/auth/service";
+import InvitationScreen from "@/features/invitations/components/invitation-screen";
 
 export const dynamic = "force-dynamic";
 

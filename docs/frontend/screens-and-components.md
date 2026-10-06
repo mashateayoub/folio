@@ -24,7 +24,7 @@ The workspace is currently a large orchestration component. Further extraction s
 
 ## Implementation references
 
-- [src/components/workspace.tsx](../../src/components/workspace.tsx)
-- [src/components/source-editor.tsx](../../src/components/source-editor.tsx)
-- [src/components/pdf-preview.tsx](../../src/components/pdf-preview.tsx)
-- [src/components/settings-shell.tsx](../../src/components/settings-shell.tsx)
+- [src/features/editor/components/workspace.tsx](../../src/features/editor/components/workspace.tsx)
+- [src/features/editor/components/source-editor.tsx](../../src/features/editor/components/source-editor.tsx)
+- [src/features/editor/components/pdf-preview.tsx](../../src/features/editor/components/pdf-preview.tsx)
+- [src/components/shared/settings-shell.tsx](../../src/components/shared/settings-shell.tsx)

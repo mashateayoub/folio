@@ -2,9 +2,9 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
 import { z } from "zod";
-import { cloud, CloudError } from "../src/lib/cloud-client";
-import { responses } from "../src/lib/api-responses";
-import { starterProject } from "../src/lib/project";
+import { cloud, CloudError } from "@/shared/http/cloud-client";
+import { responses } from "@/shared/contracts/api-responses";
+import { starterProject } from "@/features/projects/model";
 
 test("API responses validate project contracts and preserve HTTP errors", async () => {
   const project = {

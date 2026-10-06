@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { compileProject, CompileError } from "../services/compiler/compile";
-import { starterProject, createProject } from "../src/lib/project";
+import { starterProject, createProject } from "@/features/projects/model";
 
 test("compiles French workshop packages, accents, and Babel ordinals", async () => {
   const project = createProject("blank");

@@ -28,7 +28,7 @@ See [permissions](../security/authorization.md), [source limits](../features/pro
 
 ## Implementation references
 
-- [src/components/workspace.tsx](../../src/components/workspace.tsx)
-- [src/components/account-settings.tsx](../../src/components/account-settings.tsx)
-- [src/components/project-access.tsx](../../src/components/project-access.tsx)
-- [src/components/project-library.tsx](../../src/components/project-library.tsx)
+- [src/features/editor/components/workspace.tsx](../../src/features/editor/components/workspace.tsx)
+- [src/features/account/components/account-settings.tsx](../../src/features/account/components/account-settings.tsx)
+- [src/features/projects/components/project-access.tsx](../../src/features/projects/components/project-access.tsx)
+- [src/features/projects/components/project-library.tsx](../../src/features/projects/components/project-library.tsx)

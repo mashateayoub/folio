@@ -25,5 +25,5 @@ No managed hosting configuration, reverse proxy, production scheduler, backup se
 
 - [compose.yaml](../../compose.yaml)
 - [infra/Dockerfile.web](../../infra/Dockerfile.web)
-- [src/lib/server/config.ts](../../src/lib/server/config.ts)
+- [src/server/config.ts](../../src/server/config.ts)
 - [src/app/api/compile/route.ts](../../src/app/api/compile/route.ts)

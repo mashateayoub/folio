@@ -1,4 +1,4 @@
-import AuthScreen from "@/components/auth-screen";
+import AuthScreen from "@/features/auth/components/auth-screen";
 
 export default async function Page({
   searchParams,

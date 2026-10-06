@@ -40,3 +40,7 @@ Run these npm scripts from the repository root. Host env-file scripts need `.env
 Volume deletion, production secret changes, and restore overwrites are separate operator decisions. Never print full expanded config as a quick diagnostic when it contains secrets.
 
 [package.json](../../package.json) · [compose.yaml](../../compose.yaml)
+
+| Script            | Exact command                                                                  | Purpose                                                                      |
+| ----------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `npm run test:db` | `node --env-file=.env.local --import tsx --test tests/database.integration.ts` | Typed ORM Date/JSON persistence and transaction rollback against PostgreSQL. |

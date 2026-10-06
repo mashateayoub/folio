@@ -1,4 +1,4 @@
-import { stripeProvider } from "../src/lib/server/billing";
+import { stripeProvider } from "@/server/billing/service";
 
 async function main() {
   const provider = stripeProvider();

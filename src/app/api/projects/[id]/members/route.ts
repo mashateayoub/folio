@@ -1,6 +1,6 @@
-import { api, actorFor, json, jsonBody } from "@/lib/server/http";
-import { projectGrants, setProjectGrant } from "@/lib/server/saas";
-import { grantInput, identifier } from "@/lib/server/schemas";
+import { api, actorFor, json, jsonBody } from "@/server/http";
+import { projectGrants, setProjectGrant } from "@/server/projects/service";
+import { grantInput, identifier } from "@/server/validation";
 
 export function GET(
   request: Request,

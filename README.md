@@ -66,7 +66,7 @@ Impeccable live mode uses a development-only injection slot in the root layout. 
 
 ## Authorization model
 
-The reusable policy is in `src/lib/policy.ts`; server resource resolution and enforcement are in `src/lib/server/saas.ts`. Identity is obtained from the database session, never from a user ID in request JSON. The project determines its workspace, and the server checks current membership and grants.
+The reusable policy is in `src/features/access-control/policy.ts`; server resource resolution and enforcement are in `src/server/access/context.ts`. Identity is obtained from the database session, never from a user ID in request JSON. The project determines its workspace, and the server checks current membership and grants.
 
 | Role / grant             | Read                           | Edit / compile             | Manage / delete        |
 | ------------------------ | ------------------------------ | -------------------------- | ---------------------- |
@@ -153,3 +153,5 @@ Compose is a local environment. For public hosting, configure a real HTTPS `APP_
 This implementation is a functional SaaS foundation. Simultaneous collaborative editing, WebSocket presence, durable offline drafts, assets, ZIP import, revision history, SyncTeX, queued builds/cancellation, external object storage, and production load/restore acceptance remain on the roadmap. Edits pending during a failed save stay in the open tab, with an unload guard; closing the tab can lose them. Revision conflicts require reloading, so export a source ZIP to preserve conflicting edits first.
 
 See [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md), [TASKS.md](./TASKS.md), and the [Better Auth documentation](https://www.better-auth.com/docs/introduction) for the underlying identity library.
+
+See [source structure](docs/architecture/source-structure.md) and [Drizzle ORM](docs/data/orm.md) for the feature/server layout and database ownership.

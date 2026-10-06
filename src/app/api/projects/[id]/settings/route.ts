@@ -1,6 +1,6 @@
-import { api, actorFor, json, jsonBody } from "@/lib/server/http";
-import { setProjectAttributes } from "@/lib/server/saas";
-import { attributesInput, identifier } from "@/lib/server/schemas";
+import { api, actorFor, json, jsonBody } from "@/server/http";
+import { setProjectAttributes } from "@/server/projects/service";
+import { attributesInput, identifier } from "@/server/validation";
 
 export function PATCH(
   request: Request,

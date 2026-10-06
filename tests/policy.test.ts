@@ -6,7 +6,7 @@ import {
   activeMembership,
   type AccessContext,
   type OrgRole,
-} from "../src/lib/policy";
+} from "@/features/access-control/policy";
 
 function context(role: OrgRole = "member"): AccessContext {
   return {

@@ -16,5 +16,5 @@ Auth animation uses GSAP/useGSAP and CSS transitions with reduced-motion handlin
 
 - [src/app/globals.css](../../src/app/globals.css)
 - [src/app/layout.tsx](../../src/app/layout.tsx)
-- [src/components/auth-specimen.tsx](../../src/components/auth-specimen.tsx)
+- [src/features/auth/components/auth-specimen.tsx](../../src/features/auth/components/auth-specimen.tsx)
 - [DESIGN.md](../../DESIGN.md)

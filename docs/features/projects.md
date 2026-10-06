@@ -16,7 +16,7 @@ Archived projects count toward project capacity. Existing over-capacity data is 
 
 ## Implementation references
 
-- [src/lib/project.ts](../../src/lib/project.ts)
-- [src/lib/saas-types.ts](../../src/lib/saas-types.ts)
-- [src/components/workspace.tsx](../../src/components/workspace.tsx)
+- [src/features/projects/model.ts](../../src/features/projects/model.ts)
+- [src/shared/types/saas.ts](../../src/shared/types/saas.ts)
+- [src/features/editor/components/workspace.tsx](../../src/features/editor/components/workspace.tsx)
 - [src/app/api/projects/import/route.ts](../../src/app/api/projects/import/route.ts)

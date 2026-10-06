@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getActor } from "@/lib/server/auth";
-import AccountSettings from "@/components/account-settings";
+import { getActor } from "@/server/auth/service";
+import AccountSettings from "@/features/account/components/account-settings";
 
 export const dynamic = "force-dynamic";
 

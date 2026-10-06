@@ -1,32 +1,34 @@
+import { sql } from "drizzle-orm";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
-import type Stripe from "stripe";
-import type {
-  BillingProvider,
-  BillingSubscription,
-  BillingCheckout,
-} from "../src/lib/server/billing-provider";
-import { db } from "../src/lib/server/db";
-import type { Actor } from "../src/lib/server/auth";
+import Stripe from "stripe";
+import {
+  type BillingProvider,
+  type BillingSubscription,
+  type BillingCheckout,
+} from "@/server/billing/provider";
+import { db, closeDatabase } from "@/server/database/client";
+import { type Actor } from "@/server/auth/service";
 import {
   checkout,
   portal,
   processBillingEvent,
   billingSummary,
   syncBilling,
-} from "../src/lib/server/billing";
+} from "@/server/billing/service";
 import {
   createOrganization,
+  changeOrgMember,
+} from "@/server/workspaces/service";
+import {
   createCloudProject,
   getProject,
   saveProject,
-  changeOrgMember,
-  beginBuild,
-  finishBuild,
-  invitation,
-} from "../src/lib/server/saas";
-import { HttpError } from "../src/lib/server/http";
+} from "@/server/projects/service";
+import { beginBuild, finishBuild } from "@/server/builds/service";
+import { invitation } from "@/server/invitations/service";
+import { HttpError } from "@/server/http";
 import { createHash } from "node:crypto";
 
 test(
@@ -135,9 +137,8 @@ test(
           twoFactorEnabled: false,
         };
 
-        await db().query(
-          'INSERT INTO "user"(id,name,email,"emailVerified",disabled,"createdAt","updatedAt") VALUES ($1,$2,$3,true,false,now(),now())',
-          [actor.id, actor.name, actor.email],
+        await db().execute(
+          sql`INSERT INTO "user"(id,name,email,"emailVerified",disabled,"createdAt","updatedAt") VALUES (${actor.id},${actor.name},${actor.email},true,false,now(),now())`,
         );
         actors.push(actor);
       }
@@ -145,9 +146,8 @@ test(
       const [owner, admin, outsider] = actors;
       const org = await createOrganization(owner, "Billing acceptance");
       orgs.push(org.id);
-      await db().query(
-        "INSERT INTO organization_members(organization_id,user_id,role) VALUES ($1,$2,'admin')",
-        [org.id, admin.id],
+      await db().execute(
+        sql`INSERT INTO organization_members(organization_id,user_id,role) VALUES (${org.id},${admin.id},'admin')`,
       );
       await rejects(checkout(outsider, org.id, provider), 404);
       await rejects(checkout(admin, org.id, provider), 403);
@@ -159,9 +159,8 @@ test(
       await assert.rejects(checkout(owner, org.id, provider), /Response lost/);
       assert.equal(
         (
-          await db().query(
-            "SELECT customer_id FROM workspace_billing WHERE organization_id=$1",
-            [org.id],
+          await db().execute(
+            sql`SELECT customer_id FROM workspace_billing WHERE organization_id=${org.id}`,
           )
         ).rows[0].customer_id,
         "cus_local_1",
@@ -247,13 +246,11 @@ test(
       await rejects(createCloudProject(owner, org.id, "blank"), 429);
 
       for (const actor of actors.slice(3, 7))
-        await db().query(
-          "INSERT INTO organization_members(organization_id,user_id,role) VALUES ($1,$2,'member')",
-          [org.id, actor.id],
+        await db().execute(
+          sql`INSERT INTO organization_members(organization_id,user_id,role) VALUES (${org.id},${actor.id},'member')`,
         );
-      await db().query(
-        "INSERT INTO organization_members(organization_id,user_id,role,state) VALUES ($1,$2,'member','revoked')",
-        [org.id, actors[7].id],
+      await db().execute(
+        sql`INSERT INTO organization_members(organization_id,user_id,role,state) VALUES (${org.id},${actors[7].id},'member','revoked')`,
       );
       await changeOrgMember(owner, org.id, actors[7].id, {
         role: "member",
@@ -274,14 +271,12 @@ test(
           twoFactorEnabled: false,
         };
 
-        await db().query(
-          'INSERT INTO "user"(id,name,email,"emailVerified",disabled,"createdAt","updatedAt") VALUES ($1,$2,$3,true,false,now(),now())',
-          [actor.id, actor.name, actor.email],
+        await db().execute(
+          sql`INSERT INTO "user"(id,name,email,"emailVerified",disabled,"createdAt","updatedAt") VALUES (${actor.id},${actor.name},${actor.email},true,false,now(),now())`,
         );
         actors.push(actor);
-        await db().query(
-          "INSERT INTO organization_members(organization_id,user_id,role) VALUES ($1,$2,'member')",
-          [org.id, actor.id],
+        await db().execute(
+          sql`INSERT INTO organization_members(organization_id,user_id,role) VALUES (${org.id},${actor.id},'member')`,
         );
       }
 
@@ -296,19 +291,18 @@ test(
       const key =
         "org-builds:" + org.id + ":" + new Date().toISOString().slice(0, 7);
 
-      await db().query(
-        "INSERT INTO usage_counters(key,count,expires_at) VALUES ($1,1000,now()+interval '35 days')",
-        [key],
+      await db().execute(
+        sql`INSERT INTO usage_counters(key,count,expires_at) VALUES (${key},1000,now()+interval '35 days')`,
       );
       const build = await beginBuild(owner, project.id, project.revision);
       await finishBuild(build.id, null, "Acceptance check");
-      await db().query("UPDATE usage_counters SET count=20000 WHERE key=$1", [
-        key,
-      ]);
+      await db().execute(
+        sql`UPDATE usage_counters SET count=20000 WHERE key=${key}`,
+      );
       await rejects(beginBuild(owner, project.id, project.revision), 429);
-      await db().query("UPDATE usage_counters SET count=1001 WHERE key=$1", [
-        key,
-      ]);
+      await db().execute(
+        sql`UPDATE usage_counters SET count=1001 WHERE key=${key}`,
+      );
       all[0].cancel_at_period_end = true;
       await processBillingEvent(event("evt_scheduled_cancel"), provider);
       const scheduled = await billingSummary(owner, org.id, provider);
@@ -353,15 +347,8 @@ test(
         "Still editable",
       );
       const token = randomUUID();
-      await db().query(
-        "INSERT INTO invitations(id,organization_id,email,role,token_hash,expires_at,created_by) VALUES ($1,$2,$3,'member',$4,now()+interval '1 day',$5)",
-        [
-          randomUUID(),
-          org.id,
-          actors[7].email,
-          createHash("sha256").update(token).digest("hex"),
-          owner.id,
-        ],
+      await db().execute(
+        sql`INSERT INTO invitations(id,organization_id,email,role,token_hash,expires_at,created_by) VALUES (${randomUUID()},${org.id},${actors[7].email},'member',${createHash("sha256").update(token).digest("hex")},now()+interval '1 day',${owner.id})`,
       );
       await rejects(invitation(actors[7], token, true), 429);
       const completed = [...requests.values()][0];
@@ -379,8 +366,8 @@ test(
       );
       assert.equal(
         (
-          await db().query(
-            "SELECT * FROM billing_events WHERE event_id='evt_retry'",
+          await db().execute(
+            sql`SELECT * FROM billing_events WHERE event_id='evt_retry'`,
           )
         ).rowCount,
         0,
@@ -399,9 +386,8 @@ test(
       );
       all[0].status = "active";
       await syncBilling(owner, org.id, provider);
-      await db().query(
-        "UPDATE organizations SET plan_valid_until=now()-interval '1 second' WHERE id=$1",
-        [org.id],
+      await db().execute(
+        sql`UPDATE organizations SET plan_valid_until=now()-interval '1 second' WHERE id=${org.id}`,
       );
       await rejects(createCloudProject(owner, org.id, "blank"), 429);
       assert.equal(
@@ -420,22 +406,22 @@ test(
       assert.equal(customers, 1);
     } finally {
       for (const id of orgs) {
-        await db().query("DELETE FROM usage_counters WHERE key LIKE $1", [
-          "org-builds:" + id + ":%",
-        ]);
-        await db().query("DELETE FROM organizations WHERE id=$1", [id]);
+        await db().execute(
+          sql`DELETE FROM usage_counters WHERE key LIKE ${"org-builds:" + id + ":%"}`,
+        );
+        await db().execute(sql`DELETE FROM organizations WHERE id=${id}`);
       }
 
       for (const actor of actors) {
-        await db().query("DELETE FROM usage_counters WHERE key LIKE $1", [
-          "user-builds:" + actor.id + ":%",
-        ]);
-        await db().query('DELETE FROM "user" WHERE id=$1', [actor.id]);
+        await db().execute(
+          sql`DELETE FROM usage_counters WHERE key LIKE ${"user-builds:" + actor.id + ":%"}`,
+        );
+        await db().execute(sql`DELETE FROM "user" WHERE id=${actor.id}`);
       }
 
       if (previousPrice === undefined) delete process.env.STRIPE_TEAM_PRICE_ID;
       else process.env.STRIPE_TEAM_PRICE_ID = previousPrice;
-      await db().end();
+      await closeDatabase();
     }
   },
 );

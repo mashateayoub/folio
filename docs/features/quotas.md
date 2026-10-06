@@ -18,6 +18,6 @@ Project capacity is released by deletion rather than archive. Seat expiry/revoca
 
 ## Implementation references
 
-- [src/lib/billing-plans.ts](../../src/lib/billing-plans.ts)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/features/billing/plans.ts](../../src/features/billing/plans.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)

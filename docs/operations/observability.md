@@ -14,8 +14,8 @@ No tracing backend, metrics exporter, alert integration, centralized log retenti
 
 ## Implementation references
 
-- [src/lib/server/http.ts](../../src/lib/server/http.ts)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/server/http.ts](../../src/server/http.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)
 - [next.config.ts](../../next.config.ts)
 - [services/compiler/server.ts](../../services/compiler/server.ts)

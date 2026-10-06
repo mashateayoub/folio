@@ -1,13 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import Stripe from "stripe";
-import type { BillingSubscription } from "../src/lib/server/billing-provider";
+import { type BillingSubscription } from "@/server/billing/provider";
 import {
   subscriptionEntitlement,
   verifyBillingEvent,
-} from "../src/lib/server/billing";
-import { effectivePlan } from "../src/lib/billing-plans";
-import { rawBody, HttpError } from "../src/lib/server/http";
+} from "@/server/billing/service";
+import { effectivePlan } from "@/features/billing/plans";
+import { rawBody, HttpError } from "@/server/http";
 
 test("paid entitlement requires a current, matching, single-item subscription", () => {
   const now = Date.now();

@@ -41,6 +41,6 @@ Use [testing](../development/testing.md), [deployment](deployment.md), and [back
 ## Implementation references
 
 - [compose.yaml](../../compose.yaml)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
 - [scripts/reconcile-billing.ts](../../scripts/reconcile-billing.ts)
-- [src/components/use-project-persistence.ts](../../src/components/use-project-persistence.ts)
+- [src/features/editor/hooks/use-project-persistence.ts](../../src/features/editor/hooks/use-project-persistence.ts)

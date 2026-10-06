@@ -37,6 +37,6 @@ The owner requests a server-configured Team checkout. Stable idempotency seeds a
 ## Implementation references
 
 - [src/app/page.tsx](../../src/app/page.tsx)
-- [src/components/use-project-persistence.ts](../../src/components/use-project-persistence.ts)
+- [src/features/editor/hooks/use-project-persistence.ts](../../src/features/editor/hooks/use-project-persistence.ts)
 - [src/app/api/compile/route.ts](../../src/app/api/compile/route.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)

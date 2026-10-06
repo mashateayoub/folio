@@ -1,14 +1,15 @@
-import { db } from "../src/lib/server/db";
+import { sql } from "drizzle-orm";
+import { db, closeDatabase } from "@/server/database/client";
 import {
   reconcileWorkspaceBilling,
   stripeProvider,
-} from "../src/lib/server/billing";
+} from "@/server/billing/service";
 
 async function main() {
   const provider = stripeProvider();
 
-  const rows = await db().query<{ organization_id: string }>(
-    "SELECT organization_id FROM workspace_billing WHERE customer_id IS NOT NULL ORDER BY organization_id",
+  const rows = await db().execute<{ organization_id: string }>(
+    sql`SELECT organization_id FROM workspace_billing WHERE customer_id IS NOT NULL ORDER BY organization_id`,
   );
 
   let failed = 0;
@@ -42,4 +43,4 @@ main()
     );
     process.exitCode = 1;
   })
-  .finally(() => db().end());
+  .finally(() => closeDatabase());

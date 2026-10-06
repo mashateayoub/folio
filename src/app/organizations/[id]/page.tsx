@@ -1,8 +1,8 @@
 import { headers } from "next/headers";
 import { redirect, notFound } from "next/navigation";
-import { getActor } from "@/lib/server/auth";
-import { organizations } from "@/lib/server/saas";
-import OrganizationSettings from "@/components/organization-settings";
+import { getActor } from "@/server/auth/service";
+import { organizations } from "@/server/workspaces/service";
+import OrganizationSettings from "@/features/workspaces/components/organization-settings";
 
 export const dynamic = "force-dynamic";
 

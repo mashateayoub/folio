@@ -16,6 +16,6 @@ The browser receives only the redirect URL. API secret keys, arbitrary prices, a
 
 ## Implementation references
 
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)
 - [src/app/api/organizations/[id]/billing/checkout/route.ts](../../src/app/api/organizations/[id]/billing/checkout/route.ts)
-- [src/components/billing-settings.tsx](../../src/components/billing-settings.tsx)
+- [src/features/billing/components/billing-settings.tsx](../../src/features/billing/components/billing-settings.tsx)

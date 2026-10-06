@@ -1,6 +1,6 @@
 # Database ownership and relationships
 
-Better Auth owns the identity/session/plugin tables created by its installed migration runner. Folio SQL migrations own tenant, project, build, audit, billing, and usage tables. Do not independently rename auth columns: their generated schema follows installed Better Auth options/version.
+Better Auth uses identity/session/plugin tables modeled in Drizzle and bootstrapped by the explicit 000_auth.sql migration. Folio SQL migrations own all application and auth DDL. Do not independently rename auth columns: their typed schema must remain compatible with installed Better Auth options/version.
 
 ```mermaid
 erDiagram

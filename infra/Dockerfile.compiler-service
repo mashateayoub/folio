@@ -5,7 +5,7 @@ COPY package.json package-lock.json ./
 COPY scripts/copy-pdf-worker.mjs scripts/copy-pdf-worker.mjs
 RUN npm ci
 COPY tsconfig.json ./
-COPY src/lib/project.ts src/lib/project.ts
+COPY src/features/projects/model.ts src/features/projects/model.ts
 COPY services/compiler services/compiler
 EXPOSE 4100
 CMD ["node", "--import", "tsx", "services/compiler/server.ts"]

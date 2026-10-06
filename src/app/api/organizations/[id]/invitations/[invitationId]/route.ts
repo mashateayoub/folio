@@ -1,6 +1,6 @@
-import { api, actorFor, json } from "@/lib/server/http";
-import { revokeInvitation } from "@/lib/server/saas";
-import { identifier } from "@/lib/server/schemas";
+import { api, actorFor, json } from "@/server/http";
+import { revokeInvitation } from "@/server/invitations/service";
+import { identifier } from "@/server/validation";
 
 export function DELETE(
   request: Request,

@@ -58,4 +58,5 @@ jobs:
       - run: npm ci
       - run: touch .env.local
       - run: npm run db:migrate
+      - run: npm run test:db
       - run: npm run test:billing

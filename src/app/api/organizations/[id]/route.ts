@@ -1,6 +1,6 @@
-import { api, actorFor, json } from "@/lib/server/http";
-import { organizationDetails } from "@/lib/server/saas";
-import { identifier } from "@/lib/server/schemas";
+import { api, actorFor, json } from "@/server/http";
+import { organizationDetails } from "@/server/workspaces/service";
+import { identifier } from "@/server/validation";
 
 export function GET(
   request: Request,

@@ -8,3 +8,5 @@ Trace system boundaries, requests, locks, and implementation tradeoffs.
 - [System architecture](system.md)
 
 [All documentation](../README.md)
+
+- [Source structure](source-structure.md)

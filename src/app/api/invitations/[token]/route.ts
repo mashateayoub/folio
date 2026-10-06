@@ -1,5 +1,5 @@
-import { api, actorFor, json, HttpError } from "@/lib/server/http";
-import { invitation } from "@/lib/server/saas";
+import { api, actorFor, json, HttpError } from "@/server/http";
+import { invitation } from "@/server/invitations/service";
 
 function token(value: string) {
   if (!/^[a-f0-9]{64}$/.test(value))

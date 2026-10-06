@@ -16,7 +16,7 @@ Project grants accept the email of an active workspace member and editor/viewer/
 
 ## Implementation references
 
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
-- [src/lib/server/schemas.ts](../../src/lib/server/schemas.ts)
-- [src/components/organization-settings.tsx](../../src/components/organization-settings.tsx)
-- [src/components/project-access.tsx](../../src/components/project-access.tsx)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
+- [src/server/validation.ts](../../src/server/validation.ts)
+- [src/features/workspaces/components/organization-settings.tsx](../../src/features/workspaces/components/organization-settings.tsx)
+- [src/features/projects/components/project-access.tsx](../../src/features/projects/components/project-access.tsx)

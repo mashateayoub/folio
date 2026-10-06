@@ -14,7 +14,7 @@ A responsive source/preview switch and file-panel toggle provide mobile access. 
 
 ## Implementation references
 
-- [src/components/workspace.tsx](../../src/components/workspace.tsx)
-- [src/components/pdf-preview.tsx](../../src/components/pdf-preview.tsx)
+- [src/features/editor/components/workspace.tsx](../../src/features/editor/components/workspace.tsx)
+- [src/features/editor/components/pdf-preview.tsx](../../src/features/editor/components/pdf-preview.tsx)
 - [scripts/copy-pdf-worker.mjs](../../scripts/copy-pdf-worker.mjs)
 - [src/app/api/compile/route.ts](../../src/app/api/compile/route.ts)

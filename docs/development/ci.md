@@ -2,7 +2,7 @@
 
 `.github/workflows/checks.yml` runs on push and pull requests. The checks job installs Node 22 with npm cache, runs npm ci, combined lint, formatting check, TypeScript, unit tests, and production build. It does not launch the web/SMTP/compiler/browser stack.
 
-The billing job starts PostgreSQL 16-alpine with isolated CI credentials, configures a local test origin and private test-only auth/compiler strings, creates an empty `.env.local` for Node's env-file invocation, applies migrations, and runs PostgreSQL billing integration with the typed provider fixture. Those test strings are not production credentials.
+The billing job starts PostgreSQL 16-alpine with isolated CI credentials, configures a local test origin and private test-only auth/compiler strings, creates an empty `.env.local` for Node's env-file invocation, applies migrations, and runs ORM persistence/rollback acceptance and PostgreSQL billing integration with the typed provider fixture. Those test strings are not production credentials.
 
 Real browser, SaaS, TeX, and hosted Stripe acceptance are separate local/operator tiers. They are not automatically part of the current GitHub workflow. Public launch therefore needs explicit reporting of those checks and its infrastructure acceptance rather than assuming green CI implies full hosted correctness.
 

@@ -26,7 +26,7 @@ Busy compiler responses include `Retry-After: 2`; this is not a general retry co
 
 ## Implementation references
 
-- [src/lib/server/http.ts](../../src/lib/server/http.ts)
-- [src/lib/cloud-client.ts](../../src/lib/cloud-client.ts)
+- [src/server/http.ts](../../src/server/http.ts)
+- [src/shared/http/cloud-client.ts](../../src/shared/http/cloud-client.ts)
 - [src/app/api/compile/route.ts](../../src/app/api/compile/route.ts)
 - [services/compiler/server.ts](../../services/compiler/server.ts)

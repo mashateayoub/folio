@@ -1,6 +1,6 @@
 # Generated authentication schema
 
-The following is column metadata from the migrated local PostgreSQL schema on 2026-10-04. It contains no user records, token values, hashes, or credentials. Better Auth owns these tables; its installed options and migration runner determine exact columns. Re-inspect on library/plugin upgrades rather than treating this snapshot as migration code.
+The following is column metadata from the migrated local PostgreSQL schema on 2026-10-04. It contains no user records, token values, hashes, or credentials. This is a historical column snapshot. These tables now have Drizzle models and an explicit versioned SQL bootstrap compatible with the installed Better Auth options. Re-inspect on library/plugin upgrades rather than treating this snapshot as migration code.
 
 Identity includes account/user, session, verification, two-factor, and rate-limit storage. Application IDs reference the auth `user.id` text key. Credentials/session/plugin storage must be backed up and access-restricted alongside tenant data.
 
@@ -83,6 +83,6 @@ Identity includes account/user, session, verification, two-factor, and rate-limi
 
 ## Ownership and inspection
 
-Auth tables are generated rather than maintained in Folio SQL migrations. The table snapshot above does not enumerate every index/foreign-key constraint. Use read-only `information_schema`/PostgreSQL catalog inspection to inspect those when upgrading. Avoid posting record contents or decrypted MFA material in support output. See [migrations](migrations.md) and [authentication](../security/authentication.md).
+Auth tables now have versioned Folio SQL migrations and typed Drizzle models. See [ORM ownership](orm.md). The table snapshot above does not enumerate every index/foreign-key constraint. Use read-only `information_schema`/PostgreSQL catalog inspection to inspect those when upgrading. Avoid posting record contents or decrypted MFA material in support output. See [migrations](migrations.md) and [authentication](../security/authentication.md).
 
-[Migration runner](../../scripts/migrate.ts) · [Auth configuration](../../src/lib/server/auth.ts)
+[Migration runner](../../scripts/migrate.ts) · [Auth configuration](../../src/server/auth/service.ts)

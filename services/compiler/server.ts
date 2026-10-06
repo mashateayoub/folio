@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
 import { timingSafeEqual } from "node:crypto";
 import { compileProject, CompileError } from "./compile";
-import { projectSchema } from "../../src/lib/project";
+import { projectSchema } from "@/features/projects/model";
 
 const token = process.env.COMPILER_TOKEN;
 

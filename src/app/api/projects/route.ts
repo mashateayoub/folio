@@ -1,6 +1,6 @@
-import { api, actorFor, json, jsonBody } from "@/lib/server/http";
-import { createCloudProject, listProjects } from "@/lib/server/saas";
-import { createProjectInput, identifier } from "@/lib/server/schemas";
+import { api, actorFor, json, jsonBody } from "@/server/http";
+import { createCloudProject, listProjects } from "@/server/projects/service";
+import { createProjectInput, identifier } from "@/server/validation";
 
 export function GET(request: Request) {
   return api(async () => {

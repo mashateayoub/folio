@@ -43,9 +43,9 @@ The UI calls the Better Auth client for email signup/sign-in, sign-out, verifica
 
 ## Implementation references
 
-- [src/lib/server/schemas.ts](../../src/lib/server/schemas.ts)
+- [src/server/validation.ts](../../src/server/validation.ts)
 - [src/app/api/auth/[...all]/route.ts](../../src/app/api/auth/[...all]/route.ts)
-- [src/lib/auth-client.ts](../../src/lib/auth-client.ts)
+- [src/features/auth/client.ts](../../src/features/auth/client.ts)
 - [tests/saas.integration.ts](../../tests/saas.integration.ts)
 
 ## Route source inventory

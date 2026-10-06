@@ -17,7 +17,7 @@ flowchart LR
 
 The browser handles interaction and short-lived editing/preview state. Protected server pages obtain identity from database-backed Better Auth sessions. Route handlers validate bodies and origins, then call domain services. Domain services resolve tenants, apply policy, serialize critical writes, and persist data.
 
-`src/lib/server/saas.ts` owns projects, memberships, invitations, audit, and build records. `billing.ts` owns checkout/provider reconciliation and verified payment-derived limits. `policy.ts` is a pure role-and-attribute evaluator shared by server decisions and returned UI permissions. `config.ts` centralizes core environment validation; the compiler also checks its own token.
+Domain services under `src/server` own projects, workspaces, invitations, audits, usage, and build records. `src/server/billing/service.ts` owns checkout/provider reconciliation and verified payment-derived limits. Drizzle supplies typed models, queries, and transactions over the PostgreSQL driver; Better Auth uses its Drizzle adapter. `policy.ts` is a pure role-and-attribute evaluator shared by server decisions and returned UI permissions. `config.ts` centralizes core environment validation; the compiler also checks its own token.
 
 The web runtime is Node.js because PostgreSQL, Stripe, mail, and server libraries require it. It does not run TeX in the request process. A private HTTP supervisor invokes Docker on a Docker-enabled host. The short-lived TeX job has no network and receives no application environment secrets.
 
@@ -30,6 +30,6 @@ There is no distributed queue or event bus. Webhooks and application operations 
 ## Implementation references
 
 - [compose.yaml](../../compose.yaml)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [docs/architecture/source-structure.md](source-structure.md)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)
 - [services/compiler/server.ts](../../services/compiler/server.ts)

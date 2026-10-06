@@ -12,13 +12,13 @@ Stripe event receipts are globally unique by event ID. Receipt and entitlement w
 
 Checkout customer creation is persisted separately from checkout-session creation. Stable idempotency keys prevent a lost provider response from producing a second chargeable checkout/customer on retry. This does not create a database/Stripe distributed transaction; reconciliation repairs the external boundary.
 
-Migrations use advisory transaction lock `746021`; application SQL migrations and receipts commit together. Better Auth's migration runner uses its own connections while the advisory lock remains held; this is not one atomic transaction covering both migration systems.
+Migrations use advisory transaction lock `746021`; application SQL migrations and receipts commit together. Auth bootstrap and application migrations now share the same Drizzle transaction and receipt ledger; no independent auth migration connection is opened.
 
 A synchronous compiler request can fail or leave a running record if a process exits. Later build initiation marks records older than 60 seconds failed. There is no independent watchdog or durable retry queue.
 
 ## Implementation references
 
-- [src/lib/server/db.ts](../../src/lib/server/db.ts)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/server/database/client.ts](../../src/server/database/client.ts)
+- [docs/architecture/source-structure.md](source-structure.md)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)
 - [scripts/migrate.ts](../../scripts/migrate.ts)

@@ -4,31 +4,32 @@ Declared ranges come from package.json; resolved versions below come from the co
 
 ## dependencies
 
-| Package                    | Declared   | Locked    | Role                                                                   |
-| -------------------------- | ---------- | --------- | ---------------------------------------------------------------------- |
-| `@codemirror/commands`     | `^6.11.1`  | `6.11.1`  | Editor commands and indentation shortcut                               |
-| `@codemirror/language`     | `^6.12.4`  | `6.12.4`  | Language stream/highlighting support                                   |
-| `@codemirror/legacy-modes` | `^6.5.4`   | `6.5.4`   | LaTeX stex stream mode                                                 |
-| `@codemirror/search`       | `^6.7.2`   | `6.7.2`   | CodeMirror search dependency                                           |
-| `@codemirror/state`        | `^6.7.6`   | `6.7.6`   | Editor state and transaction machinery                                 |
-| `@codemirror/view`         | `^6.43.13` | `6.43.13` | EditorView, keymaps, readonly/render integration                       |
-| `@gsap/react`              | `^2.1.2`   | `2.1.2`   | React animation lifecycle hook                                         |
-| `@phosphor-icons/react`    | `^2.1.10`  | `2.1.10`  | Primary current UI icon set                                            |
-| `@tailwindcss/postcss`     | `^4.3.3`   | `4.3.3`   | Tailwind/PostCSS integration                                           |
-| `better-auth`              | `^1.7.6`   | `1.7.6`   | Database identity, sessions, verification, MFA                         |
-| `codemirror`               | `^6.0.2`   | `6.0.2`   | Basic editor extension setup                                           |
-| `fflate`                   | `^0.8.3`   | `0.8.3`   | Browser source ZIP creation                                            |
-| `gsap`                     | `^3.15.0`  | `3.15.0`  | Auth specimen motion                                                   |
-| `lucide-react`             | `^1.49.0`  | `1.49.0`  | Declared icon dependency; inspect usage before assuming active UI role |
-| `next`                     | `^16.3.7`  | `16.3.7`  | App Router, server pages/routes, dev/build/runtime                     |
-| `nodemailer`               | `^10.0.13` | `10.0.13` | SMTP transport                                                         |
-| `pdfjs-dist`               | `5.5.207`  | `5.5.207` | Real PDF loading/rendering and matching worker                         |
-| `pg`                       | `^8.23.1`  | `8.23.1`  | PostgreSQL pool/transactions                                           |
-| `react`                    | `^19.3.0`  | `19.3.0`  | Client/server component UI                                             |
-| `react-dom`                | `^19.3.0`  | `19.3.0`  | React DOM runtime                                                      |
-| `stripe`                   | `^23.0.0`  | `23.0.0`  | Server billing/provider SDK                                            |
-| `tailwindcss`              | `^4.3.3`   | `4.3.3`   | CSS utilities/tokens pipeline                                          |
-| `zod`                      | `^4.6.5`   | `4.6.5`   | Input, response, project, config schemas                               |
+| Package                    | Declared   | Locked    | Role                                                                             |
+| -------------------------- | ---------- | --------- | -------------------------------------------------------------------------------- |
+| `@codemirror/commands`     | `^6.11.1`  | `6.11.1`  | Editor commands and indentation shortcut                                         |
+| `@codemirror/language`     | `^6.12.4`  | `6.12.4`  | Language stream/highlighting support                                             |
+| `@codemirror/legacy-modes` | `^6.5.4`   | `6.5.4`   | LaTeX stex stream mode                                                           |
+| `@codemirror/search`       | `^6.7.2`   | `6.7.2`   | CodeMirror search dependency                                                     |
+| `@codemirror/state`        | `^6.7.6`   | `6.7.6`   | Editor state and transaction machinery                                           |
+| `@codemirror/view`         | `^6.43.13` | `6.43.13` | EditorView, keymaps, readonly/render integration                                 |
+| `@gsap/react`              | `^2.1.2`   | `2.1.2`   | React animation lifecycle hook                                                   |
+| `@phosphor-icons/react`    | `^2.1.10`  | `2.1.10`  | Primary current UI icon set                                                      |
+| `@tailwindcss/postcss`     | `^4.3.3`   | `4.3.3`   | Tailwind/PostCSS integration                                                     |
+| `better-auth`              | `^1.7.6`   | `1.7.6`   | Database identity, sessions, verification, MFA                                   |
+| `codemirror`               | `^6.0.2`   | `6.0.2`   | Basic editor extension setup                                                     |
+| `drizzle-orm`              | `^0.45.3`  | `0.45.3`  | Typed PostgreSQL models, query builder, transactions, and auth adapter database. |
+| `fflate`                   | `^0.8.3`   | `0.8.3`   | Browser source ZIP creation                                                      |
+| `gsap`                     | `^3.15.0`  | `3.15.0`  | Auth specimen motion                                                             |
+| `lucide-react`             | `^1.49.0`  | `1.49.0`  | Declared icon dependency; inspect usage before assuming active UI role           |
+| `next`                     | `^16.3.7`  | `16.3.7`  | App Router, server pages/routes, dev/build/runtime                               |
+| `nodemailer`               | `^10.0.13` | `10.0.13` | SMTP transport                                                                   |
+| `pdfjs-dist`               | `5.5.207`  | `5.5.207` | Real PDF loading/rendering and matching worker                                   |
+| `pg`                       | `^8.23.1`  | `8.23.1`  | PostgreSQL pool/transactions                                                     |
+| `react`                    | `^19.3.0`  | `19.3.0`  | Client/server component UI                                                       |
+| `react-dom`                | `^19.3.0`  | `19.3.0`  | React DOM runtime                                                                |
+| `stripe`                   | `^23.0.0`  | `23.0.0`  | Server billing/provider SDK                                                      |
+| `tailwindcss`              | `^4.3.3`   | `4.3.3`   | CSS utilities/tokens pipeline                                                    |
+| `zod`                      | `^4.6.5`   | `4.6.5`   | Input, response, project, config schemas                                         |
 
 ## devDependencies
 

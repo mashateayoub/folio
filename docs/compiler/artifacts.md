@@ -14,6 +14,6 @@ An interrupted build can leave a running record until a later build marks it sta
 
 ## Implementation references
 
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
 - [src/app/api/builds/[id]/pdf/route.ts](../../src/app/api/builds/[id]/pdf/route.ts)
 - [migrations/001_saas.sql](../../migrations/001_saas.sql)

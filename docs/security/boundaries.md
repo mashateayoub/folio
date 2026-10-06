@@ -16,9 +16,9 @@ Documented protections should be tested through their actual routes; avoid repla
 
 ## Implementation references
 
-- [src/lib/server/http.ts](../../src/lib/server/http.ts)
-- [src/lib/server/schemas.ts](../../src/lib/server/schemas.ts)
-- [src/lib/project.ts](../../src/lib/project.ts)
+- [src/server/http.ts](../../src/server/http.ts)
+- [src/server/validation.ts](../../src/server/validation.ts)
+- [src/features/projects/model.ts](../../src/features/projects/model.ts)
 - [next.config.ts](../../next.config.ts)
 - [.gitignore](../../.gitignore)
 - [.dockerignore](../../.dockerignore)

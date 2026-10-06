@@ -1,5 +1,8 @@
-import { api, json, rawBody } from "@/lib/server/http";
-import { verifyBillingEvent, processBillingEvent } from "@/lib/server/billing";
+import { api, json, rawBody } from "@/server/http";
+import {
+  verifyBillingEvent,
+  processBillingEvent,
+} from "@/server/billing/service";
 
 export const runtime = "nodejs";
 

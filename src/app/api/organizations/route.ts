@@ -1,6 +1,6 @@
-import { api, actorFor, json, jsonBody } from "@/lib/server/http";
-import { organizations, createOrganization } from "@/lib/server/saas";
-import { organizationInput } from "@/lib/server/schemas";
+import { api, actorFor, json, jsonBody } from "@/server/http";
+import { organizations, createOrganization } from "@/server/workspaces/service";
+import { organizationInput } from "@/server/validation";
 
 export function GET(request: Request) {
   return api(async () => json(await organizations(await actorFor(request))));

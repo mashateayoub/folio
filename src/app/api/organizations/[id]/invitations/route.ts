@@ -1,6 +1,6 @@
-import { api, actorFor, json, jsonBody } from "@/lib/server/http";
-import { inviteMember } from "@/lib/server/saas";
-import { identifier, invitationInput } from "@/lib/server/schemas";
+import { api, actorFor, json, jsonBody } from "@/server/http";
+import { inviteMember } from "@/server/invitations/service";
+import { identifier, invitationInput } from "@/server/validation";
 
 export function POST(
   request: Request,

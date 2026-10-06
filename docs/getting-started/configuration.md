@@ -43,8 +43,8 @@ Changing PostgreSQL's initialization password variable does not alter the passwo
 
 - [.env.example](../../.env.example)
 - [scripts/setup.mjs](../../scripts/setup.mjs)
-- [src/lib/server/config.ts](../../src/lib/server/config.ts)
-- [src/lib/server/mail.ts](../../src/lib/server/mail.ts)
+- [src/server/config.ts](../../src/server/config.ts)
+- [src/server/mail.ts](../../src/server/mail.ts)
 - [compose.yaml](../../compose.yaml)
 
 ## Documentation site

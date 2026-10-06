@@ -44,7 +44,7 @@ export function sourceIsAllowed(relative) {
     [".dockerignore", ".gitignore", "LICENSE"].includes(
       path.posix.basename(relative),
     ) ||
-    /^infra\/Dockerfile\.[\w-]+$/.test(relative)
+    /^infra\/Dockerfile\.[\w.-]+$/.test(relative)
   );
 }
 

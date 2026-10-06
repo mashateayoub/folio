@@ -14,7 +14,7 @@ The Mailpit helper in tests reads captured messages to retrieve links. It is a l
 
 ## Implementation references
 
-- [src/lib/server/mail.ts](../../src/lib/server/mail.ts)
-- [src/lib/server/auth.ts](../../src/lib/server/auth.ts)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
+- [src/server/mail.ts](../../src/server/mail.ts)
+- [src/server/auth/service.ts](../../src/server/auth/service.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
 - [tests/mail-helper.ts](../../tests/mail-helper.ts)

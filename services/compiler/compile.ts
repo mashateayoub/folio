@@ -10,7 +10,7 @@ import {
 import { tmpdir } from "node:os";
 import { join, dirname, basename } from "node:path";
 import { randomUUID } from "node:crypto";
-import { projectSchema, type Project } from "../../src/lib/project";
+import { projectSchema, type Project } from "@/features/projects/model";
 
 export class CompileError extends Error {
   constructor(

@@ -21,7 +21,7 @@ Potential replacements—CRDT collaboration, a durable job queue, external objec
 
 ## Implementation references
 
-- [src/lib/policy.ts](../../src/lib/policy.ts)
-- [src/lib/api-responses.ts](../../src/lib/api-responses.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/features/access-control/policy.ts](../../src/features/access-control/policy.ts)
+- [src/shared/contracts/api-responses.ts](../../src/shared/contracts/api-responses.ts)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)
 - [src/app/layout.tsx](../../src/app/layout.tsx)

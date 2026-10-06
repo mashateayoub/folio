@@ -1,6 +1,6 @@
-import { api, actorFor } from "@/lib/server/http";
-import { artifact } from "@/lib/server/saas";
-import { identifier } from "@/lib/server/schemas";
+import { api, actorFor } from "@/server/http";
+import { artifact } from "@/server/builds/service";
+import { identifier } from "@/server/validation";
 
 export function GET(
   request: Request,

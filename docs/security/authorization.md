@@ -25,7 +25,7 @@ There is no database RLS, owner-transfer endpoint, or general policy DSL. Tests 
 
 ## Implementation references
 
-- [src/lib/policy.ts](../../src/lib/policy.ts)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
+- [src/features/access-control/policy.ts](../../src/features/access-control/policy.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
 - [tests/policy.test.ts](../../tests/policy.test.ts)
 - [tests/saas.integration.ts](../../tests/saas.integration.ts)

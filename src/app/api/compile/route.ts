@@ -1,7 +1,8 @@
-import { api, actorFor, json, jsonBody, HttpError } from "@/lib/server/http";
-import { beginBuild, finishBuild, getProject } from "@/lib/server/saas";
-import { buildInput } from "@/lib/server/schemas";
-import { config } from "@/lib/server/config";
+import { api, actorFor, json, jsonBody, HttpError } from "@/server/http";
+import { beginBuild, finishBuild } from "@/server/builds/service";
+import { getProject } from "@/server/projects/service";
+import { buildInput } from "@/server/validation";
+import { config } from "@/server/config";
 
 export const runtime = "nodejs";
 

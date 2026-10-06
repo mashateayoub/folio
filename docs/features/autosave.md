@@ -14,7 +14,7 @@ Recovery from a conflict is manual. Export the local source ZIP if needed, reloa
 
 ## Implementation references
 
-- [src/components/use-project-persistence.ts](../../src/components/use-project-persistence.ts)
-- [src/lib/cloud-client.ts](../../src/lib/cloud-client.ts)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
+- [src/features/editor/hooks/use-project-persistence.ts](../../src/features/editor/hooks/use-project-persistence.ts)
+- [src/shared/http/cloud-client.ts](../../src/shared/http/cloud-client.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
 - [tests/browser/workspace.spec.ts](../../tests/browser/workspace.spec.ts)

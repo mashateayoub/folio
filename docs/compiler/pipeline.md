@@ -18,6 +18,6 @@ Cleanup always attempts to remove the named job container, even if the Docker CL
 ## Implementation references
 
 - [src/app/api/compile/route.ts](../../src/app/api/compile/route.ts)
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
 - [services/compiler/compile.ts](../../services/compiler/compile.ts)
 - [services/compiler/server.ts](../../services/compiler/server.ts)

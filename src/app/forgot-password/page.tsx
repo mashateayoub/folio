@@ -1,4 +1,4 @@
-import AuthScreen from "@/components/auth-screen";
+import AuthScreen from "@/features/auth/components/auth-screen";
 
 export default function Page() {
   return <AuthScreen mode="forgot-password" />;

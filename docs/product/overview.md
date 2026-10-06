@@ -23,6 +23,6 @@ The browser owns unsaved editing state. PostgreSQL owns acknowledged source and 
 
 ## Implementation references
 
-- [src/lib/server/saas.ts](../../src/lib/server/saas.ts)
-- [src/lib/saas-types.ts](../../src/lib/saas-types.ts)
-- [src/lib/project.ts](../../src/lib/project.ts)
+- [docs/architecture/source-structure.md](../architecture/source-structure.md)
+- [src/shared/types/saas.ts](../../src/shared/types/saas.ts)
+- [src/features/projects/model.ts](../../src/features/projects/model.ts)

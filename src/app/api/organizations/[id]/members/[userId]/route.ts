@@ -1,6 +1,6 @@
-import { api, actorFor, json, jsonBody } from "@/lib/server/http";
-import { changeOrgMember } from "@/lib/server/saas";
-import { identifier, memberInput } from "@/lib/server/schemas";
+import { api, actorFor, json, jsonBody } from "@/server/http";
+import { changeOrgMember } from "@/server/workspaces/service";
+import { identifier, memberInput } from "@/server/validation";
 
 export function PATCH(
   request: Request,

@@ -1,6 +1,10 @@
-import { api, actorFor, json, jsonBody } from "@/lib/server/http";
-import { getProject, saveProject, deleteProject } from "@/lib/server/saas";
-import { saveProjectInput, identifier } from "@/lib/server/schemas";
+import { api, actorFor, json, jsonBody } from "@/server/http";
+import {
+  getProject,
+  saveProject,
+  deleteProject,
+} from "@/server/projects/service";
+import { saveProjectInput, identifier } from "@/server/validation";
 
 type Context = { params: Promise<{ id: string }> };
 

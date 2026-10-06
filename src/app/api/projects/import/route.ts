@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { api, actorFor, json, jsonBody } from "@/lib/server/http";
-import { projectSchema } from "@/lib/project";
-import { createCloudProject } from "@/lib/server/saas";
+import { api, actorFor, json, jsonBody } from "@/server/http";
+import { projectSchema } from "@/features/projects/model";
+import { createCloudProject } from "@/server/projects/service";
 
 export function POST(request: Request) {
   return api(async () => {

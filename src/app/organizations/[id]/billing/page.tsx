@@ -1,9 +1,9 @@
 import { headers } from "next/headers";
 import { redirect, notFound } from "next/navigation";
-import { getActor } from "@/lib/server/auth";
-import { organizations } from "@/lib/server/saas";
-import { billingSummary } from "@/lib/server/billing";
-import BillingSettings from "@/components/billing-settings";
+import { getActor } from "@/server/auth/service";
+import { organizations } from "@/server/workspaces/service";
+import { billingSummary } from "@/server/billing/service";
+import BillingSettings from "@/features/billing/components/billing-settings";
 
 export const dynamic = "force-dynamic";
 

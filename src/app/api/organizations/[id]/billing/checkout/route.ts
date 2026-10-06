@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { actorFor, api, json, jsonBody } from "@/lib/server/http";
-import { identifier } from "@/lib/server/schemas";
-import { checkout } from "@/lib/server/billing";
+import { actorFor, api, json, jsonBody } from "@/server/http";
+import { identifier } from "@/server/validation";
+import { checkout } from "@/server/billing/service";
 
 export const runtime = "nodejs";
 

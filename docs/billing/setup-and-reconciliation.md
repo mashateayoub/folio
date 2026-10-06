@@ -34,4 +34,4 @@ Sandbox acceptance refuses live prices and uses disposable resources. Public pri
 - [scripts/check-billing.ts](../../scripts/check-billing.ts)
 - [scripts/stripe-listen.mjs](../../scripts/stripe-listen.mjs)
 - [scripts/reconcile-billing.ts](../../scripts/reconcile-billing.ts)
-- [src/lib/server/billing.ts](../../src/lib/server/billing.ts)
+- [src/server/billing/service.ts](../../src/server/billing/service.ts)

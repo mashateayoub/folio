@@ -4,7 +4,7 @@ import {
   projectSchema,
   starterProject,
   createProject,
-} from "../src/lib/project";
+} from "@/features/projects/model";
 import { containerArguments } from "../services/compiler/compile";
 
 test("starter and all templates are valid projects", () => {

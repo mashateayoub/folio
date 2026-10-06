@@ -33,3 +33,5 @@ Current implementation verification passed unit, billing/PostgreSQL, SaaS, all n
 - [tests/browser/workspace.spec.ts](../../tests/browser/workspace.spec.ts)
 - [tests/billing.stripe.ts](../../tests/billing.stripe.ts)
 - [tests/billing-clock.stripe.ts](../../tests/billing-clock.stripe.ts)
+
+The database tier (`npm run test:db`) checks Drizzle date/JSON round-trips and rollback against PostgreSQL. Run after applying migrations.
