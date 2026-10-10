@@ -10,6 +10,7 @@ test("compiles French workshop packages, accents, and Babel ordinals", async () 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
+\usepackage{lmodern,microtype}
 \usepackage[margin=1.8cm,headheight=14pt]{geometry}
 \usepackage{xcolor,fancyhdr,listings,tabularx,booktabs,amsmath,amssymb,tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric}
@@ -40,6 +41,8 @@ db.commandes.aggregate([{ $match: { statut: "LIVREE" } }]);
   assert.equal(result.pdf.subarray(0, 5).toString(), "%PDF-");
   assert.ok(result.pdf.length > 5_000);
   assert.match(result.log, /french\.ldf/);
+  assert.match(result.log, /lmodern\.sty/);
+  assert.match(result.log, /microtype\.sty/);
   assert.doesNotMatch(result.log, /Running mktexpk/);
 });
 
