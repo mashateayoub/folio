@@ -78,3 +78,25 @@ test("bibliography tool and multiple passes resolve references", async () => {
   assert.match(result.log, /bibtex/i);
   assert.equal(result.pdf.subarray(0, 5).toString(), "%PDF-");
 });
+
+test("preserves compiler output beyond 64 KB, including its beginning and error", async () => {
+  const project = createProject("blank");
+
+  project.files[0].content = String.raw`\documentclass{article}
+\begin{document}
+\typeout{DIAGNOSTIC-START-MARKER}
+\newcount\logline
+\loop\typeout{Diagnostic padding line: abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789}
+\advance\logline by 1
+\ifnum\logline<1000\repeat
+\undefinedcommand
+\end{document}`;
+  await assert.rejects(compileProject(project), (error) => {
+    assert.ok(error instanceof CompileError);
+    assert.ok(error.log.length > 64_000);
+    assert.match(error.log, /DIAGNOSTIC-START-MARKER/);
+    assert.match(error.log, /Undefined control sequence/);
+
+    return true;
+  });
+});

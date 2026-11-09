@@ -55,6 +55,7 @@ import {
 import ProjectAccess from "@/features/projects/components/project-access";
 import ProjectLibrary from "@/features/projects/components/project-library";
 import Brand from "@/components/shared/brand";
+import CompilationLog from "./compilation-log";
 
 const emptyProject: CloudProject = {
   ...starterProject,
@@ -1071,20 +1072,11 @@ export default function Workspace({
             </div>
           </main>
           {showLog && (
-            <section className="log-panel">
-              <div>
-                <strong>Compilation log</strong>
-                <button
-                  className="icon-button"
-                  aria-label="Close compilation log"
-                  onClick={() => setShowLog(false)}
-                >
-                  <X size={15} />
-                </button>
-              </div>
-              <p>{buildStatus}</p>
-              {log && <pre>{log}</pre>}
-            </section>
+            <CompilationLog
+              log={log}
+              status={buildStatus}
+              onClose={() => setShowLog(false)}
+            />
           )}
           <footer className="statusbar">
             <span>

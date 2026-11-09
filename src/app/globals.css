@@ -195,9 +195,17 @@
   .statusbar>span { @apply flex items-center gap-2; }
   .mobile-tabs { @apply hidden; }
   .editor-loading { @apply flex min-h-48 flex-1 items-center justify-center p-6 text-sm text-muted; }
-  .log-panel { @apply max-h-52 overflow-auto border-t border-line bg-[#fff8f5] px-5 py-4; }
-  .log-panel>div { @apply flex items-center justify-between; }
+  .log-panel { @apply max-h-[45vh] overflow-auto border-t border-line bg-[#fff8f5] px-5 py-4; }
+  .log-panel>.log-heading { @apply flex items-center justify-between; }
   .log-panel strong { @apply text-sm font-medium; }
+  .log-panel details { @apply mt-3 text-xs; }
+  .log-panel summary { @apply cursor-pointer py-1 font-medium; }
+  .log-panel summary:focus-visible, .download-compiler-log:focus-visible { outline:2px solid currentColor; outline-offset:3px; }
+  .compilation-explanation { @apply mt-2 text-xs leading-relaxed text-[#933b2d]; }
+  .compilation-explanation h3 { @apply text-sm font-semibold; }
+  .compilation-explanation p, .log-panel details>p { @apply mt-2; }
+  .compilation-location { @apply font-mono; }
+  .download-compiler-log { @apply mt-3 inline-flex items-center gap-2 text-xs underline underline-offset-4; }
   .log-panel>p { @apply mt-2 text-xs text-[#933b2d]; }
   .log-panel pre { @apply mt-3 whitespace-pre-wrap text-[11px] leading-relaxed; overflow-wrap:anywhere; }
 

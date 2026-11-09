@@ -65,16 +65,28 @@ function run(
     const child = spawn("docker", args, { stdio: ["ignore", "pipe", "pipe"] });
     let output = "";
     let timedOut = false;
+    let logLimitExceeded = false;
+    let outputBytes = 0;
 
     const timer = setTimeout(() => {
       timedOut = true;
       child.kill("SIGKILL");
     }, timeoutMs);
 
-    function collect(data: Buffer) {
-      output = (output + data.toString()).slice(-64_000);
+    function collect(data: string) {
+      if (logLimitExceeded) return;
+      output += data;
+      outputBytes += Buffer.byteLength(data);
+
+      // Stop abusive output instead of silently discarding diagnostic history.
+      if (outputBytes > 16_000_000) {
+        logLimitExceeded = true;
+        child.kill("SIGKILL");
+      }
     }
 
+    child.stdout.setEncoding("utf8");
+    child.stderr.setEncoding("utf8");
     child.stdout.on("data", collect);
     child.stderr.on("data", collect);
     child.on("error", (e) => {
@@ -90,7 +102,15 @@ function run(
     child.on("close", (code) => {
       clearTimeout(timer);
 
-      if (timedOut)
+      if (logLimitExceeded)
+        reject(
+          new CompileError(
+            "Compilation stopped because compiler output exceeded the 16 MB log limit.",
+            output,
+            422,
+          ),
+        );
+      else if (timedOut)
         reject(
           new CompileError(
             "Compilation exceeded the 30-second limit.",

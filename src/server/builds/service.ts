@@ -62,7 +62,7 @@ export async function beginBuild(
 export async function finishBuild(id: string, pdf: Buffer | null, log: string) {
   return transaction(async (client) => {
     const row = await client.execute<{ project_id: string }>(
-      sql`UPDATE builds SET status=${pdf ? "succeeded" : "failed"},pdf=${pdf},log=${log.slice(-64000)},snapshot=NULL,finished_at=now() WHERE id=${id} AND status='running' RETURNING project_id`,
+      sql`UPDATE builds SET status=${pdf ? "succeeded" : "failed"},pdf=${pdf},log=${log},snapshot=NULL,finished_at=now() WHERE id=${id} AND status='running' RETURNING project_id`,
     );
 
     if (!row.rowCount) return;

@@ -196,9 +196,17 @@ test("edits, saves, reloads, renders a PDF and preserves it on LaTeX failure", a
   await expect(page.getByText("Compilation log", { exact: true })).toBeVisible({
     timeout: 40_000,
   });
-  await expect(page.locator(".log-panel pre")).toContainText(
+  await expect(page.locator(".log-panel pre").first()).toContainText(
     "Undefined control sequence",
   );
+  await expect(
+    page.getByRole("heading", { name: "LaTeX does not recognize a command" }),
+  ).toBeVisible();
+  await page.getByText("Full compiler log", { exact: true }).click();
+  await expect(page.locator(".log-panel pre").last()).toContainText("Latexmk");
+  const logDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download full log" }).click();
+  expect((await logDownload).suggestedFilename()).toBe("compilation.log");
   await expect(
     page.getByRole("button", { name: "Download PDF" }),
   ).toBeEnabled();
