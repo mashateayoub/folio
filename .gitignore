@@ -14,3 +14,9 @@ docs-site/.vitepress/navigation.json
 .impeccable/live/*
 !.impeccable/live/config.json
 .impeccable/review/**/*.png
+
+# Local reports, logs, and operating-system metadata.
+coverage/
+*.log
+.DS_Store
+Thumbs.db

@@ -17,6 +17,8 @@ Open http://localhost:4173. See the [docs site guide](docs/getting-started/docum
 Requirements: Docker Engine 26+ with Compose v2, and Node.js 22+ / npm for setup. The compiler uses Docker's volume subpath feature.
 
 ```sh
+git clone https://github.com/mashateayoub/folio.git
+cd folio
 npm install
 npm run setup
 docker compose up -d --build
