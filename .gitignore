@@ -13,10 +13,15 @@ docs-site/.vitepress/navigation.json
 
 .impeccable/live/*
 !.impeccable/live/config.json
-.impeccable/review/**/*.png
+.impeccable/review/
 
 # Local reports, logs, and operating-system metadata.
 coverage/
 *.log
 .DS_Store
 Thumbs.db
+
+# Private design-session records and installer artifacts.
+.impeccable/surfaces/
+/tools/oxlint/anti-slop/INSTALL_DIAGNOSTICS.txt
+/tools/oxlint/anti-slop/PRISTINE.tar.gz

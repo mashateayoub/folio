@@ -13,3 +13,7 @@ docs-site/content
 docs-site/.vitepress/dist
 docs-site/.vitepress/cache
 docs-site/.vitepress/navigation.json
+
+.impeccable/surfaces
+tools/oxlint/anti-slop/INSTALL_DIAGNOSTICS.txt
+tools/oxlint/anti-slop/PRISTINE.tar.gz

@@ -42,6 +42,10 @@ test("source references reject credentials, dependencies, and traversal", () => 
     ".git/config",
     "node_modules/a.ts",
     "../private.ts",
+    ".impeccable/review/verdict.md",
+    ".impeccable/surfaces/workspace.md",
+    "tools/oxlint/anti-slop/INSTALL_DIAGNOSTICS.txt",
+    "tools/oxlint/anti-slop/PRISTINE.tar.gz",
   ]) {
     assert.equal(sourceIsAllowed(source), false, source);
   }

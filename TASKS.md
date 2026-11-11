@@ -32,7 +32,7 @@ Completed SaaS tasks:
 - [x] Verify real Stripe Sandbox checkout, portal, signed delivery, renewals, payment failure/recovery, and cancellations with provider configuration.
 - [ ] Validate public deployment, monitoring, load, backups/restore, and stronger worker isolation.
 
-Validation passed: ESLint, TypeScript, production Docker builds, policy/source unit checks, the SaaS API integration suite against both development and Compose, nine authenticated browser workflows, billing integration checks, and real Stripe Sandbox hosted and Test Clock acceptance. The 752 anti-slop baseline findings across 80 files are now resolved. Combined lint and formatting checks pass with all generic rules enabled; the plugin's `INSTALL_DIAGNOSTICS.txt` preserves the original report.
+Validation passed: ESLint, TypeScript, production Docker builds, policy/source unit checks, the SaaS API integration suite against both development and Compose, nine authenticated browser workflows, billing integration checks, and real Stripe Sandbox hosted and Test Clock acceptance. The 752 anti-slop baseline findings across 80 files are now resolved. Combined lint and formatting checks pass with all generic rules enabled. Installation diagnostics are private local artifacts.
 
 The original milestone checkboxes below remain unchecked wherever their broader acceptance criteria (assets, queueing, object storage, collaboration, history, and public deployment) are unfinished. The runnable architecture currently uses PostgreSQL JSONB sources and bytea artifacts, and synchronous private compiler requests; Redis and object storage remain future scaling work.
 

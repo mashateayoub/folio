@@ -21,7 +21,7 @@ Run lint autofix for supported readability issues, then Prettier, then lint agai
 
 Prettier 3.9.9 formats owned TS/TSX/MJS under src/tests/services/scripts and root TS/MJS. Current scripts do not format Markdown, CSS, YAML, or JSON. Vendored rules and agent tooling are excluded from application lint; the formatter's explicit targets also omit them. Preserve nested vendor licenses/provenance.
 
-The historical install baseline was 752 findings across 80 files; cleanup resolved them with rules intact. `INSTALL_DIAGNOSTICS.txt` is the old report, not today's lint output. The plugin source remains byte-identical to its pristine snapshot. Its source revision is unknown; `UPSTREAM.md` states that honestly and stores a recoverable archive. Opt-in Effect rules are present but not registered because there is no direct Effect dependency.
+The historical install baseline was 752 findings across 80 files; cleanup resolved them with rules intact. Installation diagnostics and backup archives are excluded from the public repository. The plugin source was compared byte-for-byte with the supplied bundle at installation. Its source revision is unknown; `UPSTREAM.md` records the available provenance without local machine paths. Opt-in Effect rules are present but not registered because there is no direct Effect dependency.
 
 ## Implementation references
 

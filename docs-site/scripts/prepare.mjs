@@ -27,6 +27,9 @@ export function sourceIsAllowed(relative) {
 
   if (
     relative.startsWith("../") ||
+    relative.startsWith(".impeccable/review/") ||
+    relative.startsWith(".impeccable/surfaces/") ||
+    relative === "tools/oxlint/anti-slop/INSTALL_DIAGNOSTICS.txt" ||
     path.isAbsolute(relative) ||
     segments.some((segment) =>
       [".git", "node_modules", ".next", "content", "dist"].includes(segment),
@@ -38,7 +41,7 @@ export function sourceIsAllowed(relative) {
     return false;
 
   return (
-    /\.(md|json|yaml|yml|ts|tsx|mjs|css|sql|example|woff2|txt|gz|conf)$/.test(
+    /\.(md|json|yaml|yml|ts|tsx|mjs|css|sql|example|woff2|txt|conf)$/.test(
       relative,
     ) ||
     [".dockerignore", ".gitignore", "LICENSE"].includes(
